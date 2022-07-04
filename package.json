@@ -1,0 +1,17 @@
+{
+  "name": "konstantin_devico_cypress",
+  "version": "1.0.0",
+  "description": "education project for cypress course",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cypress",
+    "edu",
+    "course",
+    "demo"
+  ],
+  "author": "konstantin_devico",
+  "license": "MIT"
+}
