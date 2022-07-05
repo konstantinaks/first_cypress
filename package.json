@@ -13,5 +13,8 @@
     "demo"
   ],
   "author": "konstantin_devico",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^10.3.0"
+  }
 }
