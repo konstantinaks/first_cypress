@@ -64,10 +64,59 @@ describe('UI tests for sign in page', () => {
         cy.get(sign_in_page.licenseText).contains('Built by')
     })
 
-    it ('clickCopyrightLink', () => {
-        cy.get(sign_in_page.copyright).should('have.attr', 'href', 'https://cypress.io').click()
-        cy.get(sign_in_page.copyrightCheckget)
+    //it ('clickCopyrightLink', () => {
+    //    cy.get(sign_in_page.copyright).should('have.attr', 'href', 'https://cypress.io').click()
+    //})
+
+    const FirstName = "Bob"
+    const LastName = "Dilan"
+    const Username = "Niklot2"
+    const Password = "12345"
+    const BankName = "LOXBank"
+    const RoutingNum = "NameBank1"
+    const AccountNum = "123456789"
+
+
+    it ('should allow a visitor to sign-up', () => {
+        cy.get(sign_in_page.have_Dont_have_an_account_Sign_Up).click()
+        cy.get(sign_in_page.first_Name).type(FirstName)
+        cy.get(sign_in_page.last_Name).type(LastName)
+        cy.get(sign_in_page.username).type(Username)
+        cy.get(sign_in_page.password).type(Password)
+        cy.get(sign_in_page.ConfirmPassword).type(Password)
+        cy.get(sign_in_page.Signup_Submit).click()
+
     })
+
+    it('should allow a visitor to login', () => {
+        cy.get(sign_in_page.username).type(Username)
+        cy.get(sign_in_page.password).type(Password)
+        cy.get(sign_in_page.sign_in).click()
+        cy.get(sign_in_page.modal).should('be.visible')
+        cy.get(sign_in_page.clickNext).click()
+    })
+
+    it('Create Bank Account', () => {
+        cy.get(sign_in_page.bankName).type(BankName)
+        cy.get(sign_in_page.routing_number).type(RoutingNum)
+        cy.get(sign_in_page.account_number).type(AccountNum)
+        cy.get(sign_in_page.click_save_bank).click()
+        cy.get(sign_in_page.click_done).click()
+
+    })
+
+    it('should allow a visitor to logout', () => {
+        cy.get(sign_in_page.logout_btn).click()
+    })
+
+
+
+
+
+
+
+
+
 
 
 
