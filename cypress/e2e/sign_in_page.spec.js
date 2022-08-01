@@ -73,10 +73,6 @@ describe('UI tests for sign in page', () => {
         cy.dataForCreateBank()
     })
 
-    it('deleteBankAccount', () => {
-        cy.deleteBankAccount()
-    })
-
 
     it('custom command for logout from an account', () => {
         cy.logoutFromAccount()
