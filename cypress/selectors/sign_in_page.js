@@ -58,10 +58,10 @@ export const sign_in_page = {
 }
 
 export const dataForSignUp = {
-    FirstName: "Arnold",
-    LastName: "Schwarzenegger",
-    Username: "Terminator2",
-    Password: "937-99-92",
+    FirstName: 'akjdfghahs',
+    LastName: "Schwarzeneggeasdasdr",
+    Username: generateUsername(),
+    Password: "asdojhaskdg32",
     ErrorPassword: '!@#$%^&*()'
 }
 
@@ -72,10 +72,8 @@ export const dataForCreateBank = {
 }
 
 export const dataForLoginTransaction = {
-
     CreatedAccount: "Katharina_Bernier",
     CreatedPassword: "s3cret"
-
 }
 
 export  const dataForLoginReceiver = {
@@ -83,4 +81,17 @@ export  const dataForLoginReceiver = {
     ReceiverPassword: 's3cret'
 }
 
+function generateUsername() {
+    const names = [
+        "Alex",
+        "Viktor",
+        "Ivan",
+        "Ostap",
+        "Igor",
+        "Michael",
+    ];
+    const randomNum = Math.floor(Math.random() * 1000);
+    const pickedNameIndex = Math.floor(Math.random() * names.length);
+    return `${names[pickedNameIndex]}${randomNum}`;
+}
 
