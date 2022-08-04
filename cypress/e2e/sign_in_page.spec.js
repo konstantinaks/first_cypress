@@ -1,5 +1,5 @@
 import {sign_in_page, dataForSignUp, dataForCreateBank} from "../selectors/sign_in_page";
-
+let cookie_global;
 
 describe('UI tests for sign in page', () => {
 
@@ -7,78 +7,80 @@ describe('UI tests for sign in page', () => {
         cy.visit('/')
      })
 
-    // Should display login errors
-    it ('Check errors in sign in page', () => {
+    // // Should display login errors
+    // it ('Check errors in sign in page', () => {
+    //
+    //     cy.get(sign_in_page.fieldUsername).type('qwerty')
+    //     cy.get(sign_in_page.fieldPassword).type('passwordtext')
+    //     cy.get(sign_in_page.sign_in).click()
+    //     cy.get(sign_in_page.usernameOrPasswordIsInvalid).should('be.visible').should('have.text', 'Username or password is invalid')
+    //     cy.get(sign_in_page.fieldUsername).type('NormalLogin')
+    //     cy.get(sign_in_page.fieldPassword).type('12').blur()
+    //     cy.get(sign_in_page.messagePasswordMustContainAtLeast4Characters).should('be.visible').should('have.text', 'Password must contain at least 4 characters')
+    //
+    // })
+    //
+    // //should display signup errors
+    //
+    // it('Check error in First name field' , () => {
+    //     cy.get(sign_in_page.click_Link).click()
+    //     cy.get(sign_in_page.first_Name).click().blur()
+    //     cy.get(sign_in_page.messageFirstNameIsRequired).should('be.visible').should('have.text', 'First Name is required')
+    // })
+    //
+    // it ('Check error in Last name field', () => {
+    //     cy.get(sign_in_page.last_Name).click().blur()
+    //     cy.get(sign_in_page.messageLastNameIsRequired).should('be.visible').should('have.text', 'Last Name is required')
+    // })
+    //
+    // it ('Check error in Usermane field', () => {
+    //     cy.get(sign_in_page.username).click().blur()
+    //     cy.get(sign_in_page.messageUsernameIsRequired).should('be.visible').should('have.text', 'Username is required')
+    // })
+    //
+    // it('Check errors in Password field', () => {
+    //     cy.get(sign_in_page.password).click().blur()
+    //     cy.get(sign_in_page.messageEnterYourPassword).should('be.visible').should('have.text', 'Enter your password')
+    //
+    //     cy.get(sign_in_page.password).type('0').blur()
+    //     cy.get(sign_in_page.messagePasswordMustContainAtLeast4Characters).should('be.visible').should('have.text', 'Password must contain at least 4 characters')
+    //     cy.get(sign_in_page.password).clear()
+    // })
+    //
+    // it ('Check errors in Confirm password field', () => {
+    //     cy.get(sign_in_page.ConfirmPassword).click().blur()
+    //     cy.get(sign_in_page.messageConfirmYourPassword).should('be.visible').should('have.text', 'Confirm your password')
+    //     cy.get(sign_in_page.password).type('12345')
+    //     cy.get(sign_in_page.ConfirmPassword).type('1234')
+    //     cy.get(sign_in_page.messagePasswordDoesNotMatch).should('be.visible').should('have.text', 'Password does not match')
+    // })
+    //
 
-        cy.get(sign_in_page.fieldUsername).type('qwerty')
-        cy.get(sign_in_page.fieldPassword).type('passwordtext')
-        cy.get(sign_in_page.sign_in).click()
-        cy.get(sign_in_page.usernameOrPasswordIsInvalid).should('be.visible').should('have.text', 'Username or password is invalid')
-        cy.get(sign_in_page.fieldUsername).type('NormalLogin')
-        cy.get(sign_in_page.fieldPassword).type('12').blur()
-        cy.get(sign_in_page.messagePasswordMustContainAtLeast4Characters).should('be.visible').should('have.text', 'Password must contain at least 4 characters')
-
+    it('sign-up', () => {
+        cy.sign_up()
     })
 
-    //should display signup errors
-
-    it('Check error in First name field' , () => {
-        cy.get(sign_in_page.click_Link).click()
-        cy.get(sign_in_page.first_Name).click().blur()
-        cy.get(sign_in_page.messageFirstNameIsRequired).should('be.visible').should('have.text', 'First Name is required')
+    it('login', () => {
+        cy.login()
+        cy.getCookie("connect.sid").then((cookie) => {
+            cookie_global = cookie;
+        });
     })
 
-    it ('Check error in Last name field', () => {
-        cy.get(sign_in_page.last_Name).click().blur()
-        cy.get(sign_in_page.messageLastNameIsRequired).should('be.visible').should('have.text', 'Last Name is required')
-    })
-
-    it ('Check error in Usermane field', () => {
-        cy.get(sign_in_page.username).click().blur()
-        cy.get(sign_in_page.messageUsernameIsRequired).should('be.visible').should('have.text', 'Username is required')
-    })
-
-    it('Check errors in Password field', () => {
-        cy.get(sign_in_page.password).click().blur()
-        cy.get(sign_in_page.messageEnterYourPassword).should('be.visible').should('have.text', 'Enter your password')
-
-        cy.get(sign_in_page.password).type('0').blur()
-        cy.get(sign_in_page.messagePasswordMustContainAtLeast4Characters).should('be.visible').should('have.text', 'Password must contain at least 4 characters')
-        cy.get(sign_in_page.password).clear()
-    })
-
-    it ('Check errors in Confirm password field', () => {
-        cy.get(sign_in_page.ConfirmPassword).click().blur()
-        cy.get(sign_in_page.messageConfirmYourPassword).should('be.visible').should('have.text', 'Confirm your password')
-        cy.get(sign_in_page.password).type('12345')
-        cy.get(sign_in_page.ConfirmPassword).type('1234')
-        cy.get(sign_in_page.messagePasswordDoesNotMatch).should('be.visible').should('have.text', 'Password does not match')
-    })
-
-
-    it('custom command for user sign-up', () => {
-        cy.dataForSignUp()
-    })
-
-    it('custom command for user login', () => {
-        cy.dataForLogin()
-    })
-
-    it('custom command from display bank account form errors', () => {
-        cy.dataDisplayBankAccountFormErrors()
-    })
-
-
-    it('custom command for create bank account', () => {
-        cy.dataForCreateBank()
+    it('complete_onboarding', () => {
+        cy.setCookie(cookie_global.name, cookie_global.value);
+        cy.complete_onboarding()
     })
 
 
     it('custom command for logout from an account', () => {
         cy.logoutFromAccount()
-
     })
 
+    it('custom command for user login', () => {
+        cy.login()
+        cy.pause()
+    })
 
     // should error for an invalid user
 

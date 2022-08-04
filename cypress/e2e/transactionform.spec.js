@@ -4,18 +4,12 @@ import {dataForCreateBank, dataForLoginTransaction, dataForLoginReceiver} from "
 describe('UI tests for transaction', () => {
 
     before("signin", () => {
-        cy.visit('/')
+        cy.login()
     });
 
-    it('custom command login user for submits a transaction payment and request', () => {
-        cy.dataForLoginTransaction()
+    it('create new transaction', () => {
+        cy.get(sign_in_page.btnCreateNewTransaction).click()
     })
-
-    it ('create new transaction', () => {
-        cy.get(sign_in_page.btnCreateNewTransaction)
-            .click()
-    })
-
 
     it('select user for transaction', () => {
         cy.get(sign_in_page.transaction_list)
