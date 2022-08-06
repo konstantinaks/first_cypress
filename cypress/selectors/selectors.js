@@ -1,4 +1,4 @@
-export const sign_in_page = {
+export const selectors = {
     logo_image: '.makeStyles-logo-3',
     title_text: '.MuiTypography-h5',
     fieldUsername: '#username',
@@ -9,7 +9,7 @@ export const sign_in_page = {
     checkboxOn: '.PrivateSwitchBase-input-14',
     checkboxOff: '.PrivateSwitchBase-input-14',
     sinnInDisabled: '[data-test="signin-submit"]',
-    have_Dont_have_an_account_Sign_Up: '[data-test="signup"]',
+    haveDontHaveAnAccountSignUp: '[data-test="signup"]',
     haveText: '[data-test="signup"]',
     click_Link: '[data-test="signup"]',
     licenseText: '.MuiTypography-body2',
@@ -58,14 +58,14 @@ export const sign_in_page = {
 }
 
 export const dataForSignUp = {
-    FirstName: "Arnold",
-    LastName: "Schwarzenegger",
-    Username: "Terminator2",
-    Password: "937-99-92",
+    FirstName: generateData(),
+    LastName: generateData(),
+    Username: generateData(),
+    Password: generateData(),
     ErrorPassword: '!@#$%^&*()'
 }
 
-export const dataForCreateBank = {
+export const complete_onboarding = {
     BankName: "RandomBankName",
     RoutingNumber: 'BankNAME1',
     AccountNumber: '1122334456'
@@ -83,4 +83,38 @@ export  const dataForLoginReceiver = {
     ReceiverPassword: 's3cret'
 }
 
+function generateData() {
+    const names = [
+        "Alex",
+        "Viktor",
+        "Ivan",
+        "Ostap",
+        "Igor",
+        "Michael",
+    ];
+    const randomNum = Math.floor(Math.random() * 1000);
+    const pickedNameIndex = Math.floor(Math.random() * names.length);
+    return `${names[pickedNameIndex]}${randomNum}`;
+}
 
+export const dataForSingUpAndDeleteBankAccount = {
+    FirstName: credential(),
+    LastName: credential(),
+    Username: credential(),
+    Password: credential(),
+    ErrorPassword: '!@#$%^&*()'
+}
+
+function credential() {
+    const names = [
+        "Alex",
+        "Viktor",
+        "Ivan",
+        "Ostap",
+        "Igor",
+        "Michael",
+    ];
+    const randomNum = Math.floor(Math.random() * 1000);
+    const pickedNameIndex = Math.floor(Math.random() * names.length);
+    return `${names[pickedNameIndex]}${randomNum}`;
+}

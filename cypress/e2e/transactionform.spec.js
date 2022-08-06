@@ -1,4 +1,4 @@
-import {sign_in_page, dataForSignUp } from "../selectors/sign_in_page";
+import {selectors, dataForSignUp } from "../selectors/selectors";
 import {dataForCreateBank, dataForLoginTransaction, dataForLoginReceiver} from "../support/commands";
 
 describe('UI tests for transaction', () => {
@@ -12,30 +12,30 @@ describe('UI tests for transaction', () => {
     })
 
     it ('create new transaction', () => {
-        cy.get(sign_in_page.btnCreateNewTransaction)
+        cy.get(selectors.btnCreateNewTransaction)
             .click()
     })
 
 
     it('select user for transaction', () => {
-        cy.get(sign_in_page.transaction_list)
+        cy.get(selectors.transaction_list)
             .should("be.visible")
             .contains('Arely Kertzmann')
             .click({ force: true });
     })
 
     // it('displays new transaction errors', () => {
-    //     cy.get(sign_in_page.amountField)
+    //     cy.get(selectors.amountField)
     //         .blur()
     //         .click()
-    //     cy.get(sign_in_page.messagePleaseEnteraValidAmount)
+    //     cy.get(selectors.messagePleaseEnteraValidAmount)
     //         .should('be.visible')
     //         .should('have.text', 'Please enter a valid amount')
     //
-    //     cy.get(sign_in_page.addANoteField)
+    //     cy.get(selectors.addANoteField)
     //         .click()
     //         .blur()
-    //     cy.get(sign_in_page.messagePleaseEnteraNote)
+    //     cy.get(selectors.messagePleaseEnteraNote)
     //         .should('be.visible')
     //         .should('have.text', 'Please enter a note')
     // })
@@ -43,10 +43,10 @@ describe('UI tests for transaction', () => {
 
 
     it ('create transaction pay', () => {
-        cy.get(sign_in_page.amountField).type('2')
-        cy.get(sign_in_page.addANoteField).type('Your money')
-        cy.get(sign_in_page.payBtn).click()
-        cy.get(sign_in_page.returnToTransactionsBtn).click()
+        cy.get(selectors.amountField).type('2')
+        cy.get(selectors.addANoteField).type('Your money')
+        cy.get(selectors.payBtn).click()
+        cy.get(selectors.returnToTransactionsBtn).click()
     })
 
 
@@ -60,23 +60,23 @@ describe('UI tests for transaction', () => {
 
 
     it ('create new transaction', () => {
-        cy.get(sign_in_page.homeBtn)
+        cy.get(selectors.homeBtn)
             .click()
-        cy.get(sign_in_page.btnCreateNewTransaction)
+        cy.get(selectors.btnCreateNewTransaction)
             .click()
     })
 
     it('select user for request', () => {
-        cy.get(sign_in_page.transaction_list)
+        cy.get(selectors.transaction_list)
             .should("be.visible")
             .contains('Arely Kertzmann')
             .click({ force: true })
     })
 
     it ('create transaction payment', () => {
-        cy.get(sign_in_page.amountField).type(5 )
-        cy.get(sign_in_page.addANoteField).type('Where is the Money Lebowski?')
-        cy.get(sign_in_page.requestBtn).click()
+        cy.get(selectors.amountField).type(5 )
+        cy.get(selectors.addANoteField).type('Where is the Money Lebowski?')
+        cy.get(selectors.requestBtn).click()
     })
 
 
