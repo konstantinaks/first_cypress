@@ -1,4 +1,4 @@
-import {sign_in_page, dataForSignUp} from "../selectors/sign_in_page";
+import {selectors, dataForSignUp} from "../selectors/selectors";
 import {dataForCreateBank} from "../support/commands";
 
 describe('UI tests for sign in page', () => {
@@ -19,7 +19,7 @@ describe('UI tests for sign in page', () => {
         cy.dataForCreateBank()
     })
 
-    it('deleteBankAccount', () => {
+    it('user should be able to delete a bank account', () => {
         cy.deleteBankAccount()
     })
 
