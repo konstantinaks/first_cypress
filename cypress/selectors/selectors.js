@@ -53,7 +53,15 @@ export const selectors = {
     homeBtn: '[data-test="sidenav-home"]',
     messagePleaseEnteraValidAmount: '#transaction-create-amount-input-helper-text',
     messagePleaseEnteraNote: '#transaction-create-description-input-helper-text',
-    returnToTransactionsBtn: '[data-test="new-transaction-return-to-transactions"]'
+    returnToTransactionsBtn: '[data-test="new-transaction-return-to-transactions"]',
+    messageTransactionSubmitted: '[data-test="alert-bar-success"]',
+    textYourTransactionPayment: '[class="ReactVirtualized__Grid ReactVirtualized__List"]',
+    textYourTransactionRequest: '[class="ReactVirtualized__Grid ReactVirtualized__List"]',
+    searchField: '[data-test="user-list-search-input"]',
+    fieldWithAttribute: '.MuiGrid-spacing-xs-1'
+
+
+
 
 }
 

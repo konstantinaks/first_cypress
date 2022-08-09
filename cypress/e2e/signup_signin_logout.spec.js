@@ -7,9 +7,11 @@ describe('UI tests for sign in page', () => {
 
     beforeEach('signup_signin_logout', () => {
         cy.visit('/')
+        cy.intercept('POST', '/login').as('login')
         cy.intercept('POST', '/users').as('signup_submit')
-        cy.intercept('POST', '/logout').as('logout')
         cy.intercept('POST', '/graphql').as('graphql')
+        cy.intercept('GET', '/notifications').as('notifications')
+        cy.intercept('POST', '/logout').as('logout')
 
     })
 
@@ -84,5 +86,19 @@ it('should allow a visitor to logout', () => {
     cy.get(selectors.logout_btn).click()
     cy.wait('@logout')
 })
+
+
+    it('custom command for user sign-up', () => {
+        cy.dataForSignUp()
+    })
+
+    it('custom command for user login', () => {
+        cy.dataForLogin()
+    })
+
+    it('custom command for logout from an account', () => {
+        cy.logoutFromAccount()
+    })
+
 
 })

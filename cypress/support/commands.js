@@ -24,6 +24,35 @@ Cypress.Commands.add('dataForLogin', () => {
     cy.get(selectors.sign_in).click()
 })
 
+
+
+Cypress.Commands.add('logoutFromAccount', () => {
+    cy.get(selectors.haveDontHaveAnAccountSignUp).click()
+    cy.get(selectors.first_Name).type(dataForSingUpAndDeleteBankAccount.FirstName)
+    cy.get(selectors.last_Name).type(dataForSingUpAndDeleteBankAccount.LastName)
+    cy.get(selectors.username).type(dataForSingUpAndDeleteBankAccount.Username)
+    cy.get(selectors.password).type(dataForSingUpAndDeleteBankAccount.Password)
+    cy.get(selectors.ConfirmPassword).type(dataForSingUpAndDeleteBankAccount.Password)
+    cy.get(selectors.Signup_Submit).click()
+    cy.wait('@signup_submit')
+    cy.get(selectors.username).type(dataForSingUpAndDeleteBankAccount.Username)
+    cy.get(selectors.password).type(dataForSingUpAndDeleteBankAccount.Password)
+    cy.get(selectors.sign_in).click()
+    cy.wait('@login')
+    cy.wait('@graphql')
+    cy.wait('@notifications')
+    cy.get(selectors.modal).should('be.visible')
+    cy.get(selectors.clickNext).click()
+    cy.get(selectors.bankName).type(complete_onboarding.BankName)
+    cy.get(selectors.routing_number).type(complete_onboarding.RoutingNumber)
+    cy.get(selectors.account_number).type(complete_onboarding.AccountNumber)
+    cy.get(selectors.click_save_bank).click()
+    cy.wait('@graphql')
+    cy.get(selectors.click_done).click()
+    cy.wait('@graphql')
+    cy.get(selectors.logout_btn).click()
+})
+
 Cypress.Commands.add('dataDisplayBankAccountFormErrors', () => {
     cy.get(selectors.haveDontHaveAnAccountSignUp).click()
     cy.get(selectors.first_Name).type(dataForSignUp.FirstName)
@@ -116,10 +145,6 @@ Cypress.Commands.add('deleteBankAccount', () => {
     cy.wait('@graphql')
     cy.get(selectors.btnBankAccounts).click()
     cy.get(selectors.btnDeleteBankAccounts).click()
-})
-
-Cypress.Commands.add('logoutFromAccount', () => {
-    cy.get(selectors.logout_btn).click()
 })
 
 
