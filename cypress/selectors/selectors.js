@@ -58,7 +58,12 @@ export const selectors = {
     textYourTransactionPayment: '[class="ReactVirtualized__Grid ReactVirtualized__List"]',
     textYourTransactionRequest: '[class="ReactVirtualized__Grid ReactVirtualized__List"]',
     searchField: '[data-test="user-list-search-input"]',
-    fieldWithAttribute: '.MuiGrid-spacing-xs-1'
+    fieldWithAttribute: '.MuiGrid-spacing-xs-1',
+    btnEveryone: '[data-test="nav-public-tab"]',
+    btnFriends: '[data-test="nav-contacts-tab"]',
+    btnMine: '[data-test="nav-personal-tab"]',
+    acceptRequestBtn: '[data-test*="transaction-accept-request"]',
+    rejectBtn: '[data-test*="transaction-reject-request"]'
 
 
 

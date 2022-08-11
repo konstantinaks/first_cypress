@@ -5,8 +5,9 @@ import {
     dataForLoginTransaction,
     dataForSignUp,
     dataForSingUpAndDeleteBankAccount,
-    selectors
+    selectors,
 } from "../selectors/selectors";
+import {dataForLoginUserB, notifications} from "../selectors/notifications";
 
 Cypress.Commands.add('dataForSignUp', () => {
     cy.visit("/signup")
@@ -159,7 +160,6 @@ Cypress.Commands.add ('dataForLoginReceiver', () => {
     cy.get(selectors.password).type(dataForLoginReceiver.ReceiverPassword)
     cy.get(selectors.sign_in).click()
 })
-
 
 
 

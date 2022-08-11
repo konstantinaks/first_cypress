@@ -61,7 +61,7 @@ describe('tests for notification', () => {
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
-        cy.get(notifications.transactionList).contains(`${userA.name} requested ${userB.name}`).first().click({force: true})
+        cy.get(notifications.transactionList).contains(`${userB.name} requested ${userA.name}`).first().click({force: true})
         cy.get(notifications.likeButton).click()
         cy.wait('@like')
         cy.get(notifications.logout_btn).click()
@@ -74,7 +74,7 @@ describe('tests for notification', () => {
         cy.wait('@notifications')
         cy.get(notifications.notificationBtn).click()
         cy.wait('@notifications')
-        cy.get(notifications.notificationslist).should("contain", `${userB.name} liked a transaction`);
+        cy.get(notifications.notificationslist).should("contain", `${userA.name} liked a transaction`);
         cy.get(notifications.logout_btn).click()
         cy.wait('@logout')
     })
