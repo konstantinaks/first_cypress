@@ -63,10 +63,20 @@ export const selectors = {
     btnFriends: '[data-test="nav-contacts-tab"]',
     btnMine: '[data-test="nav-personal-tab"]',
     acceptRequestBtn: '[data-test*="transaction-accept-request"]',
-    rejectBtn: '[data-test*="transaction-reject-request"]'
-
-
-
+    rejectBtn: '[data-test*="transaction-reject-request"]',
+    myAccountBtn: '[data-test="sidenav-user-settings"]',
+    userSettingsText: '.MuiPaper-root > .MuiTypography-root',
+    firstNameField: '#user-settings-firstName-input',
+    lastNameField: '#user-settings-lastName-input',
+    emailField: '#user-settings-email-input',
+    phoneNumberField: '#user-settings-phoneNumber-input',
+    messageEnteraFirstName: '#user-settings-firstName-input-helper-text',
+    messageEnteraLastName: '#user-settings-lastName-input-helper-text',
+    messageEnterAnEmailAddress: '#user-settings-email-input-helper-text',
+    messageEnteraPhoneNumber: '#user-settings-phoneNumber-input-helper-text',
+    saveUserSettingsBtn: '[data-test="user-settings-submit"]',
+    messageMustContainaValidEmailAddress: '#user-settings-email-input-helper-text',
+    messagePhoneNumberIsNotValid: '#user-settings-phoneNumber-input-helper-text'
 
 }
 
@@ -85,10 +95,8 @@ export const complete_onboarding = {
 }
 
 export const dataForLoginTransaction = {
-
     CreatedAccount: "Katharina_Bernier",
     CreatedPassword: "s3cret"
-
 }
 
 export  const dataForLoginReceiver = {
