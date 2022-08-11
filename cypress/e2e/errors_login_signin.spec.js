@@ -18,7 +18,6 @@ describe('tests for sign up, sign in, logout', () => {
         cy.get(selectors.fieldUsername).type('NormalLogin')
         cy.get(selectors.fieldPassword).type('12').blur()
         cy.get(selectors.messagePasswordMustContainAtLeast4Characters).should('be.visible').should('have.text', 'Password must contain at least 4 characters')
-
     })
 
     it('should display signup errors' , () => {
@@ -64,8 +63,6 @@ describe('tests for sign up, sign in, logout', () => {
         cy.get(selectors.messageUsernameOrPasswordIsInvalid).should('be.visible').should('have.text', 'Username or password is invalid')
         cy.wait('@login').its('response.statusCode').should('eq', 401);
     })
-
-
 
 })
 

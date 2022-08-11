@@ -12,12 +12,10 @@ describe('tests for sign up, sign in, logout', () => {
 
     it('should display bank account form errors', () => {
         cy.dataDisplayBankAccountFormErrors()
-
     })
 
     it('creates a new bank account', () => {
         cy.complete_onboarding()
-
     })
 
 

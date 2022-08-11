@@ -115,5 +115,4 @@ describe('tests for transaction', () => {
     let sumForRequest = 500;
     let messageP = 'Your transaction payment';
     let messageR = 'Your transaction request';
-
 })
