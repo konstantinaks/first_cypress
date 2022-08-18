@@ -40,7 +40,7 @@ describe('tests for notification', () => {
         cy.wait('@notifications')
         cy.get(selectors.btnCreateNewTransaction).click()
         cy.wait('@users')
-        cy.get(selectors.transaction_list).should("be.visible").contains('Edgar Johns').click({force: true});
+        cy.get(selectors.transaction_list).should("be.visible").contains('Edgar Johns').click()
         cy.get(selectors.amountField).type('500')
         cy.get(selectors.addANoteField).type('Money')
         cy.get(selectors.requestBtn).click()
@@ -67,7 +67,7 @@ describe('tests for notification', () => {
         cy.wait('@notifications')
         cy.get(selectors.btnCreateNewTransaction).click()
         cy.wait('@users')
-        cy.get(selectors.transaction_list).should("be.visible").contains('Edgar Johns').click({force: true});
+        cy.get(selectors.transaction_list).should("be.visible").contains('Edgar Johns').click()
         cy.get(selectors.amountField).type('500')
         cy.get(selectors.addANoteField).type('Money')
         cy.get(selectors.requestBtn).click()
@@ -95,7 +95,7 @@ describe('tests for notification', () => {
         cy.wait('@notifications')
         cy.get(selectors.btnCreateNewTransaction).click()
         cy.wait('@users')
-        cy.get(selectors.transaction_list).should("be.visible").contains('Edgar Johns').click({force: true});
+        cy.get(selectors.transaction_list).should("be.visible").contains('Edgar Johns').click()
         cy.get(selectors.amountField).type('500')
         cy.get(selectors.addANoteField).type('Money')
         cy.get(selectors.requestBtn).click()
@@ -121,7 +121,7 @@ describe('tests for notification', () => {
         cy.wait('@notifications')
         cy.get(selectors.btnCreateNewTransaction).click()
         cy.wait('@users')
-        cy.get(selectors.transaction_list).should("be.visible").contains('Edgar Johns').click({force: true});
+        cy.get(selectors.transaction_list).should("be.visible").contains('Edgar Johns').click()
         cy.get(selectors.amountField).type('500')
         cy.get(selectors.addANoteField).type('Money')
         cy.get(selectors.requestBtn).click()
@@ -138,7 +138,7 @@ describe('tests for notification', () => {
         cy.get(selectors.rejectBtn).click({ force: true })
     })
 
-    it.only('Accept/reject buttons shouldn\'t exist on completed request', () => {
+    it('Accept/reject buttons shouldn\'t exist on completed request', () => {
         cy.get(selectors.username).type(dataForLoginUserB.usernameForUserB)
         cy.get(selectors.password).type(dataForLoginUserB.passwordForUserB)
         cy.get(selectors.signIn).click()
@@ -147,7 +147,7 @@ describe('tests for notification', () => {
         cy.wait('@notifications')
         cy.get(selectors.btnCreateNewTransaction).click()
         cy.wait('@users')
-        cy.get(selectors.transaction_list).should("be.visible").contains('Edgar Johns').click({force: true});
+        cy.get(selectors.transaction_list).should("be.visible").contains('Edgar Johns').click()
         cy.get(selectors.amountField).type('500')
         cy.get(selectors.addANoteField).type('Money')
         cy.get(selectors.requestBtn).click()
