@@ -1,7 +1,6 @@
 import {selectors, dataForSignUp, dataForLoginTransaction, dataForLoginReceiver} from "../selectors/selectors";
 import {dataForLoginUserA, dataForLoginUserB, dataForLoginUserC, notifications} from "../selectors/notifications";
 
-
 const firstName = "David";
 const lastName = "Beckham";
 const email = "Beckham12345@mailinator.com";
@@ -21,7 +20,7 @@ describe('tests for notification', () => {
     it('Should render the user settings form', () => {
         cy.get(selectors.username).type(dataForLoginUserA.usernameForUserA)
         cy.get(selectors.password).type(dataForLoginUserA.passwordForUserA)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -38,7 +37,7 @@ describe('tests for notification', () => {
     it('Should display user setting form errors', () => {
         cy.get(selectors.username).type(dataForLoginUserA.usernameForUserA)
         cy.get(selectors.password).type(dataForLoginUserA.passwordForUserA)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -62,7 +61,7 @@ describe('tests for notification', () => {
     it('User should be able to update all settings in once', () => {
         cy.get(selectors.username).type(dataForLoginUserA.usernameForUserA)
         cy.get(selectors.password).type(dataForLoginUserA.passwordForUserA)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -80,7 +79,7 @@ describe('tests for notification', () => {
     it('User should be able to update first name', () => {
         cy.get(selectors.username).type(dataForLoginUserA.usernameForUserA)
         cy.get(selectors.password).type(dataForLoginUserA.passwordForUserA)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -95,7 +94,7 @@ describe('tests for notification', () => {
     it('User should be able to update last name', () => {
         cy.get(selectors.username).type(dataForLoginUserA.usernameForUserA)
         cy.get(selectors.password).type(dataForLoginUserA.passwordForUserA)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -110,7 +109,7 @@ describe('tests for notification', () => {
     it('User should be able to update email', () => {
         cy.get(selectors.username).type(dataForLoginUserA.usernameForUserA)
         cy.get(selectors.password).type(dataForLoginUserA.passwordForUserA)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -125,7 +124,7 @@ describe('tests for notification', () => {
     it('User should be able to update phone number', () => {
         cy.get(selectors.username).type(dataForLoginUserA.usernameForUserA)
         cy.get(selectors.password).type(dataForLoginUserA.passwordForUserA)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -137,4 +136,3 @@ describe('tests for notification', () => {
         cy.wait('@logout')
     })
 })
-

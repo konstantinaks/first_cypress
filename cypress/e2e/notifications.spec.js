@@ -9,17 +9,17 @@ let messageR = 'Your transaction request';
 const userA = {
     username: "Katharina Bernier",
     name: "Edgar Johns"
-};
+}
 
 const userB = {
     username: "Tavares Barrows",
     name: "Arely Kertzmann"
-};
+}
 
 const userС = {
     username: "Allie2",
     name: "Kaylin Homenick"
-};
+}
 
 describe('tests for notification', () => {
 
@@ -36,11 +36,10 @@ describe('tests for notification', () => {
         cy.intercept('GET', '/transactions').as('transaction')
     })
 
-
     it('When user A likes a transaction of user B, user B should get notification that user A liked transaction', () => {
         cy.get(selectors.username).type(dataForLoginUserB.usernameForUserB)
         cy.get(selectors.password).type(dataForLoginUserB.passwordForUserB)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -57,7 +56,7 @@ describe('tests for notification', () => {
         cy.get(notifications.logout_btn).click()
         cy.get(selectors.username).type(dataForLoginUserA.usernameForUserA)
         cy.get(selectors.password).type(dataForLoginUserA.passwordForUserA)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -68,7 +67,7 @@ describe('tests for notification', () => {
         cy.wait('@logout')
         cy.get(selectors.username).type(dataForLoginReceiver.ReceiverUsername)
         cy.get(selectors.password).type(dataForLoginReceiver.ReceiverPassword)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -82,7 +81,7 @@ describe('tests for notification', () => {
     it('When user C likes a transaction between user A and user B, user A and user B should get notifications that user C liked transaction', () => {
         cy.get(selectors.username).type(dataForLoginUserA.usernameForUserA)
         cy.get(selectors.password).type(dataForLoginUserA.passwordForUserA)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -100,7 +99,7 @@ describe('tests for notification', () => {
         cy.wait('@logout')
         cy.get(selectors.username).type(dataForLoginUserC.usernameForUserC)
         cy.get(selectors.password).type(dataForLoginUserC.passwordForUserC)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -111,7 +110,7 @@ describe('tests for notification', () => {
         cy.wait('@logout')
         cy.get(selectors.username).type(dataForLoginUserA.usernameForUserA)
         cy.get(selectors.password).type(dataForLoginUserA.passwordForUserA)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -121,7 +120,7 @@ describe('tests for notification', () => {
         cy.wait('@logout')
         cy.get(selectors.username).type(dataForLoginUserB.usernameForUserB)
         cy.get(selectors.password).type(dataForLoginUserB.passwordForUserB)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -134,7 +133,7 @@ describe('tests for notification', () => {
     it(' When user A comments on a transaction of user B, user B should get notification that User A commented on their transaction', () => {
         cy.get(selectors.username).type(dataForLoginUserB.usernameForUserB)
         cy.get(selectors.password).type(dataForLoginUserB.passwordForUserB)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -152,7 +151,7 @@ describe('tests for notification', () => {
         cy.wait('@logout')
         cy.get(selectors.username).type(dataForLoginUserA.usernameForUserA)
         cy.get(selectors.password).type(dataForLoginUserA.passwordForUserA)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -162,7 +161,7 @@ describe('tests for notification', () => {
         cy.wait('@logout')
         cy.get(selectors.username).type(dataForLoginUserB.usernameForUserB)
         cy.get(selectors.password).type(dataForLoginUserB.passwordForUserB)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -174,7 +173,7 @@ describe('tests for notification', () => {
     it('When user C comments on a transaction between user A and user B, user A and B should get notifications that user C commented on their transaction', () => {
         cy.get(selectors.username).type(dataForLoginUserA.usernameForUserA)
         cy.get(selectors.password).type(dataForLoginUserA.passwordForUserA)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -192,7 +191,7 @@ describe('tests for notification', () => {
         cy.wait('@logout')
         cy.get(selectors.username).type(dataForLoginUserC.usernameForUserC)
         cy.get(selectors.password).type(dataForLoginUserC.passwordForUserC)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -202,7 +201,7 @@ describe('tests for notification', () => {
         cy.wait('@logout')
         cy.get(selectors.username).type(dataForLoginUserA.usernameForUserA)
         cy.get(selectors.password).type(dataForLoginUserA.passwordForUserA)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -213,7 +212,7 @@ describe('tests for notification', () => {
         cy.wait('@logout')
         cy.get(selectors.username).type(dataForLoginUserB.usernameForUserB)
         cy.get(selectors.password).type(dataForLoginUserB.passwordForUserB)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -225,7 +224,7 @@ describe('tests for notification', () => {
     it('When user A sends a payment to user B, user B should be notified of payment', () => {
         cy.get(selectors.username).type(dataForLoginUserA.usernameForUserA)
         cy.get(selectors.password).type(dataForLoginUserA.passwordForUserA)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -243,7 +242,7 @@ describe('tests for notification', () => {
         cy.wait('@logout')
         cy.get(selectors.username).type(dataForLoginUserB.usernameForUserB)
         cy.get(selectors.password).type(dataForLoginUserB.passwordForUserB)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -256,7 +255,7 @@ describe('tests for notification', () => {
     it('When user A sends a payment request to user C, user C should be notified of request from user A', () => {
         cy.get(selectors.username).type(dataForLoginUserA.usernameForUserA)
         cy.get(selectors.password).type(dataForLoginUserA.passwordForUserA)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -274,7 +273,7 @@ describe('tests for notification', () => {
         cy.wait('@logout')
         cy.get(selectors.username).type(dataForLoginUserC.usernameForUserC)
         cy.get(selectors.password).type(dataForLoginUserC.passwordForUserC)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -283,5 +282,4 @@ describe('tests for notification', () => {
         cy.get(notifications.logout_btn).click()
         cy.wait('@logout')
     })
-
 })

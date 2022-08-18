@@ -5,9 +5,8 @@ export const notifications = {
     notificationBtn: '[data-test="nav-top-notifications-count"]',
     notificationslist: '[data-test="notifications-list"]',
     commentField: '[name="content"]'
-
-
 }
+
 export  const dataForLoginUserA = {
     usernameForUserA: "Katharina_Bernier",
     passwordForUserA: "s3cret"

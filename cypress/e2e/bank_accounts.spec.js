@@ -5,7 +5,7 @@ describe('tests for sign up, sign in, logout', () => {
     beforeEach('signup_signin_logout', () => {
         cy.visit('/')
         cy.intercept('POST', '/login').as('login')
-        cy.intercept('POST', '/users').as('signup_submit')
+        cy.intercept('POST', '/users').as('signupSubmit')
         cy.intercept('POST', '/graphql').as('graphql')
         cy.intercept('GET', '/notifications').as('notifications')
     })
@@ -18,9 +18,7 @@ describe('tests for sign up, sign in, logout', () => {
         cy.complete_onboarding()
     })
 
-
     it('user should be able to delete a bank account', () => {
         cy.deleteBankAccount()
     })
-
 })

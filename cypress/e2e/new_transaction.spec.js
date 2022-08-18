@@ -16,7 +16,7 @@ describe('tests for transaction', () => {
     it('navigates to the new transaction form, selects a user and submits a transaction payment', () => {
         cy.get(selectors.username).type(dataForLoginTransaction.CreatedAccount)
         cy.get(selectors.password).type(dataForLoginTransaction.CreatedPassword)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -36,7 +36,7 @@ describe('tests for transaction', () => {
     it('navigates to the new transaction form, selects a user and submits a transaction request', () => {
         cy.get(selectors.username).type(dataForLoginTransaction.CreatedAccount)
         cy.get(selectors.password).type(dataForLoginTransaction.CreatedPassword)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -56,7 +56,7 @@ describe('tests for transaction', () => {
     it('displays new transaction errors', () => {
         cy.get(selectors.username).type(dataForLoginTransaction.CreatedAccount)
         cy.get(selectors.password).type(dataForLoginTransaction.CreatedPassword)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -72,7 +72,7 @@ describe('tests for transaction', () => {
     it('submits a transaction payment and verifies the deposit for the receiver', () => {
         cy.get(selectors.username).type(dataForLoginReceiver.ReceiverUsername)
         cy.get(selectors.password).type(dataForLoginReceiver.ReceiverPassword)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -83,7 +83,7 @@ describe('tests for transaction', () => {
     it('submits a transaction request and accepts the request for the receiver', () => {
         cy.get(selectors.username).type(dataForLoginReceiver.ReceiverUsername)
         cy.get(selectors.password).type(dataForLoginReceiver.ReceiverPassword)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -91,11 +91,10 @@ describe('tests for transaction', () => {
         cy.url().should('include', '/');
     })
 
-
     it.only('searches for a user by attribute', () => {
         cy.get(selectors.username).type(dataForLoginReceiver.ReceiverUsername)
         cy.get(selectors.password).type(dataForLoginReceiver.ReceiverPassword)
-        cy.get(selectors.sign_in).click()
+        cy.get(selectors.signIn).click()
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
