@@ -1,5 +1,5 @@
-import {selectors, dataForSignUp, dataForLoginTransaction, dataForLoginReceiver} from "../selectors/selectors";
-import {dataForLoginUserA, dataForLoginUserB, dataForLoginUserC, notifications} from "../selectors/notifications";
+import {selectors, } from "../selectors/selectors";
+import {notifications} from "../selectors/notifications";
 
 const firstName = "David";
 const lastName = "Beckham";
@@ -18,9 +18,7 @@ describe('tests for notification', () => {
     })
 
     it('Should render the user settings form', () => {
-        cy.get(selectors.username).type(dataForLoginUserA.usernameForUserA)
-        cy.get(selectors.password).type(dataForLoginUserA.passwordForUserA)
-        cy.get(selectors.signIn).click()
+        cy.loginByApi("Katharina_Bernier", "s3cret")
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -30,14 +28,12 @@ describe('tests for notification', () => {
         cy.get(selectors.lastNameField).should("be.visible")
         cy.get(selectors.emailField).should("be.visible")
         cy.get(selectors.phoneNumberField).should("be.visible")
-        cy.get(notifications.logout_btn).click()
+        cy.logoutApi()
         cy.wait('@logout')
     })
 
     it('Should display user setting form errors', () => {
-        cy.get(selectors.username).type(dataForLoginUserA.usernameForUserA)
-        cy.get(selectors.password).type(dataForLoginUserA.passwordForUserA)
-        cy.get(selectors.signIn).click()
+        cy.loginByApi("Katharina_Bernier", "s3cret")
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -54,14 +50,12 @@ describe('tests for notification', () => {
         cy.get(selectors.messageEnteraPhoneNumber).should("have.text", "Enter a phone number")
         cy.get(selectors.phoneNumberField).clear().type('1')
         cy.get(selectors.messagePhoneNumberIsNotValid).should("have.text", "Phone number is not valid")
-        cy.get(notifications.logout_btn).click()
+        cy.logoutApi()
         cy.wait('@logout')
     })
 
     it('User should be able to update all settings in once', () => {
-        cy.get(selectors.username).type(dataForLoginUserA.usernameForUserA)
-        cy.get(selectors.password).type(dataForLoginUserA.passwordForUserA)
-        cy.get(selectors.signIn).click()
+        cy.loginByApi("Katharina_Bernier", "s3cret")
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -72,14 +66,12 @@ describe('tests for notification', () => {
         cy.get(selectors.phoneNumberField).clear().type(phoneNumber)
         cy.get(selectors.saveUserSettingsBtn).click()
         cy.wait("@checkAuth")
-        cy.get(notifications.logout_btn).click()
+        cy.logoutApi()
         cy.wait('@logout')
     })
 
     it('User should be able to update first name', () => {
-        cy.get(selectors.username).type(dataForLoginUserA.usernameForUserA)
-        cy.get(selectors.password).type(dataForLoginUserA.passwordForUserA)
-        cy.get(selectors.signIn).click()
+        cy.loginByApi("Katharina_Bernier", "s3cret")
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -87,14 +79,12 @@ describe('tests for notification', () => {
         cy.get(selectors.firstNameField).clear().type('Abra')
         cy.get(selectors.saveUserSettingsBtn).click()
         cy.wait("@checkAuth")
-        cy.get(notifications.logout_btn).click()
+        cy.logoutApi()
         cy.wait('@logout')
     })
 
     it('User should be able to update last name', () => {
-        cy.get(selectors.username).type(dataForLoginUserA.usernameForUserA)
-        cy.get(selectors.password).type(dataForLoginUserA.passwordForUserA)
-        cy.get(selectors.signIn).click()
+        cy.loginByApi("Katharina_Bernier", "s3cret")
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -102,14 +92,12 @@ describe('tests for notification', () => {
         cy.get(selectors.lastNameField).clear().type('Kadabra')
         cy.get(selectors.saveUserSettingsBtn).click()
         cy.wait("@checkAuth")
-        cy.get(notifications.logout_btn).click()
+        cy.logoutApi()
         cy.wait('@logout')
     })
 
     it('User should be able to update email', () => {
-        cy.get(selectors.username).type(dataForLoginUserA.usernameForUserA)
-        cy.get(selectors.password).type(dataForLoginUserA.passwordForUserA)
-        cy.get(selectors.signIn).click()
+        cy.loginByApi("Katharina_Bernier", "s3cret")
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -117,14 +105,12 @@ describe('tests for notification', () => {
         cy.get(selectors.emailField).clear().type('newMail@mailinator.com')
         cy.get(selectors.saveUserSettingsBtn).click()
         cy.wait("@checkAuth")
-        cy.get(notifications.logout_btn).click()
+        cy.logoutApi()
         cy.wait('@logout')
     })
 
     it('User should be able to update phone number', () => {
-        cy.get(selectors.username).type(dataForLoginUserA.usernameForUserA)
-        cy.get(selectors.password).type(dataForLoginUserA.passwordForUserA)
-        cy.get(selectors.signIn).click()
+        cy.loginByApi("Katharina_Bernier", "s3cret")
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
@@ -132,7 +118,7 @@ describe('tests for notification', () => {
         cy.get(selectors.phoneNumberField).clear().type('9379992')
         cy.get(selectors.saveUserSettingsBtn).click()
         cy.wait("@checkAuth")
-        cy.get(notifications.logout_btn).click()
+        cy.logoutApi()
         cy.wait('@logout')
     })
 })

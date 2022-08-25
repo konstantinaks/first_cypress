@@ -1,5 +1,5 @@
-import {selectors, dataForSignUp, dataForLoginTransaction, dataForLoginReceiver} from "../selectors/selectors";
-import {dataForCreateBank} from "../support/commands";
+import {selectors, dataForLoginReceiver, complete_onboarding} from "../selectors/selectors";
+import {credentialsApi} from "../support/loginHelper";
 
 describe('tests for transaction', () => {
 
@@ -14,15 +14,24 @@ describe('tests for transaction', () => {
     })
 
     it('navigates to the new transaction form, selects a user and submits a transaction payment', () => {
-        cy.get(selectors.username).type(dataForLoginTransaction.CreatedAccount)
-        cy.get(selectors.password).type(dataForLoginTransaction.CreatedPassword)
-        cy.get(selectors.signIn).click()
+        let username =  credentialsApi()
+        cy.signupApi(username, "1234567890")
+        cy.loginByApi(username, "1234567890")
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
+        cy.get(selectors.modal).should('be.visible')
+        cy.get(selectors.clickNext).click()
+        cy.get(selectors.bankName).type(complete_onboarding.BankName)
+        cy.get(selectors.routingNumber).type(complete_onboarding.RoutingNumber)
+        cy.get(selectors.accountNumber).type(complete_onboarding.AccountNumber)
+        cy.get(selectors.clickSaveBank).click()
+        cy.wait('@graphql')
+        cy.get(selectors.clickDone).click()
+        cy.wait('@graphql')
         cy.get(selectors.btnCreateNewTransaction).click()
         cy.wait('@users')
-        cy.get(selectors.transaction_list).should("be.visible").contains('Arely Kertzmann').click({force: true});
+        cy.get(selectors.transactionList).should("be.visible").contains('Arely Kertzmann').click({force: true});
         cy.get(selectors.amountField).type(sumForPay)
         cy.get(selectors.addANoteField).type(messageP)
         cy.get(selectors.payBtn).click()
@@ -30,19 +39,28 @@ describe('tests for transaction', () => {
         cy.get(selectors.returnToTransactionsBtn).click()
         cy.wait('@checkAuth')
         cy.get(selectors.messageTransactionSubmitted).should('be.visible').should('have.text', 'Transaction Submitted!')
-        cy.url().should('include', '/')
+        cy.logoutApi()
     })
 
     it('navigates to the new transaction form, selects a user and submits a transaction request', () => {
-        cy.get(selectors.username).type(dataForLoginTransaction.CreatedAccount)
-        cy.get(selectors.password).type(dataForLoginTransaction.CreatedPassword)
-        cy.get(selectors.signIn).click()
+        let username =  credentialsApi()
+        cy.signupApi(username, "1234567890")
+        cy.loginByApi(username, "1234567890")
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
+        cy.get(selectors.modal).should('be.visible')
+        cy.get(selectors.clickNext).click()
+        cy.get(selectors.bankName).type(complete_onboarding.BankName)
+        cy.get(selectors.routingNumber).type(complete_onboarding.RoutingNumber)
+        cy.get(selectors.accountNumber).type(complete_onboarding.AccountNumber)
+        cy.get(selectors.clickSaveBank).click()
+        cy.wait('@graphql')
+        cy.get(selectors.clickDone).click()
+        cy.wait('@graphql')
         cy.get(selectors.btnCreateNewTransaction).click()
         cy.wait('@users')
-        cy.get(selectors.transaction_list).should("be.visible").contains('Arely Kertzmann').click({force: true});
+        cy.get(selectors.transactionList).should("be.visible").contains('Arely Kertzmann').click({force: true});
         cy.get(selectors.amountField).type(sumForRequest)
         cy.get(selectors.addANoteField).type(messageR)
         cy.get(selectors.requestBtn).click()
@@ -50,23 +68,33 @@ describe('tests for transaction', () => {
         cy.get(selectors.returnToTransactionsBtn).click()
         cy.wait('@checkAuth')
         cy.get(selectors.messageTransactionSubmitted).should('be.visible').should('have.text', 'Transaction Submitted!')
-        cy.url().should('include', '/');
+        cy.logoutApi()
     })
 
     it('displays new transaction errors', () => {
-        cy.get(selectors.username).type(dataForLoginTransaction.CreatedAccount)
-        cy.get(selectors.password).type(dataForLoginTransaction.CreatedPassword)
-        cy.get(selectors.signIn).click()
+        let username =  credentialsApi()
+        cy.signupApi(username, "1234567890")
+        cy.loginByApi(username, "1234567890")
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
+        cy.get(selectors.modal).should('be.visible')
+        cy.get(selectors.clickNext).click()
+        cy.get(selectors.bankName).type(complete_onboarding.BankName)
+        cy.get(selectors.routingNumber).type(complete_onboarding.RoutingNumber)
+        cy.get(selectors.accountNumber).type(complete_onboarding.AccountNumber)
+        cy.get(selectors.clickSaveBank).click()
+        cy.wait('@graphql')
+        cy.get(selectors.clickDone).click()
+        cy.wait('@graphql')
         cy.get(selectors.btnCreateNewTransaction).click()
         cy.wait('@users')
-        cy.get(selectors.transaction_list).should("be.visible").contains('Arely Kertzmann').click({force: true});
+        cy.get(selectors.transactionList).should("be.visible").contains('Arely Kertzmann').click({force: true});
         cy.get(selectors.amountField).blur().click()
         cy.get(selectors.messagePleaseEnteraValidAmount).should('be.visible').should('have.text', 'Please enter a valid amount')
         cy.get(selectors.addANoteField).click().blur()
         cy.get(selectors.messagePleaseEnteraNote).should('be.visible').should('have.text', 'Please enter a note')
+        cy.logoutApi()
     })
 
     it('submits a transaction payment and verifies the deposit for the receiver', () => {
@@ -76,6 +104,7 @@ describe('tests for transaction', () => {
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
+        cy.get(selectors.btnMine).click()
         cy.get(selectors.textYourTransactionPayment).should("contain.text", 'Your transaction payment').should("contain.text", '-$300.00')
         cy.url().should('include', '/');
     })
@@ -87,19 +116,29 @@ describe('tests for transaction', () => {
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
+        cy.get(selectors.btnMine).click()
         cy.get(selectors.textYourTransactionRequest).should("contain.text", 'Your transaction request').should("contain.text", '+$500.00')
         cy.url().should('include', '/');
     })
 
-    it.only('searches for a user by attribute', () => {
-        cy.get(selectors.username).type(dataForLoginReceiver.ReceiverUsername)
-        cy.get(selectors.password).type(dataForLoginReceiver.ReceiverPassword)
-        cy.get(selectors.signIn).click()
+    it('searches for a user by attribute', () => {
+        let username =  credentialsApi()
+        cy.signupApi(username, "1234567890")
+        cy.loginByApi(username, "1234567890")
         cy.wait('@login')
         cy.wait('@graphql')
         cy.wait('@notifications')
+        cy.get(selectors.modal).should('be.visible')
+        cy.get(selectors.clickNext).click()
+        cy.get(selectors.bankName).type(complete_onboarding.BankName)
+        cy.get(selectors.routingNumber).type(complete_onboarding.RoutingNumber)
+        cy.get(selectors.accountNumber).type(complete_onboarding.AccountNumber)
+        cy.get(selectors.clickSaveBank).click()
+        cy.wait('@graphql')
+        cy.get(selectors.clickDone).click()
+        cy.wait('@graphql')
         cy.get(selectors.btnCreateNewTransaction).should("be.visible").click()
-        cy.get(selectors.searchField).type("277-189-3402")
+        cy.get(selectors.searchField).click({ force: true }).type("277-189-3402")
         cy.get(selectors.fieldWithAttribute).should("contain", "277-189-3402")
         cy.wait(1000)
         cy.get(selectors.searchField).clear()
@@ -107,7 +146,8 @@ describe('tests for transaction', () => {
         cy.get(selectors.fieldWithAttribute).should("contain", "Pearl56@gmail.com")
         cy.wait(1000)
         cy.get(selectors.searchField).clear()
-        cy.url().should('include', '/');
+        cy.wait(1000)
+        cy.logoutApi()
     })
 
     let sumForPay = 300;
