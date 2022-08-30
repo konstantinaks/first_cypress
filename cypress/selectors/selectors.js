@@ -1,34 +1,34 @@
 export const selectors = {
-    logo_image: '.makeStyles-logo-3',
-    title_text: '.MuiTypography-h5',
+    logoImage: '.makeStyles-logo-3',
+    titleText: '.MuiTypography-h5',
     fieldUsername: '#username',
     fieldPassword: '#password',
     placeholderPassword: '#password-label',
     placeholderUsername: '#username-label',
     outside: '.makeStyles-root-1',
-    checkboxOn: '.PrivateSwitchBase-input-14',
-    checkboxOff: '.PrivateSwitchBase-input-14',
+    clickCheckboxOn: '.PrivateSwitchBase-input-14',
+    clickCheckboxOff: '.PrivateSwitchBase-input-14',
     sinnInDisabled: '[data-test="signin-submit"]',
     haveDontHaveAnAccountSignUp: '[data-test="signup"]',
     haveText: '[data-test="signup"]',
-    click_Link: '[data-test="signup"]',
+    clickLink: '[data-test="signup"]',
     licenseText: '.MuiTypography-body2',
     copyright: '[rel="noopener noreferrer"]',
-    first_Name: '#firstName',
-    last_Name: '#lastName',
+    firstName: '#firstName',
+    lastName: '#lastName',
     username: '#username',
     password: '#password',
     ConfirmPassword: '#confirmPassword',
-    Signup_Submit: '[data-test="signup-submit"]',
-    sign_in: '[data-test="signin-submit"]',
+    SignupSubmit: '[data-test="signup-submit"]',
+    signIn: '[data-test="signin-submit"]',
     modal: '[data-test="user-onboarding-dialog-content"]',
     clickNext: '[data-test="user-onboarding-next"]',
     bankName: '#bankaccount-bankName-input',
-    routing_number: '#bankaccount-routingNumber-input',
-    account_number: '#bankaccount-accountNumber-input',
-    click_save_bank: '[data-test="bankaccount-submit"]',
-    click_done: '[data-test="user-onboarding-next"]',
-    logout_btn: '[data-test="sidenav-signout"]',
+    routingNumber: '#bankaccount-routingNumber-input',
+    accountNumber: '#bankaccount-accountNumber-input',
+    clickSaveBank: '[data-test="bankaccount-submit"]',
+    clickDone: '[data-test="user-onboarding-next"]',
+    logoutBtn: '[data-test="sidenav-signout"]',
     usernameOrPasswordIsInvalid:'[data-test="signin-error"]',
     messagePasswordMustContainAtLeast4Characters: '#password-helper-text',
     messageFirstNameIsRequired: '#firstName-helper-text',
@@ -45,7 +45,7 @@ export const selectors = {
     btnDeleteBankAccounts: '[data-test="bankaccount-delete"]',
     btn: '[data-test="bankaccount-new"]',
     btnCreateNewTransaction: '[data-test="nav-top-new-transaction"]',
-    transaction_list: '[data-test="users-list"]',
+    transactionList: '[data-test="users-list"]',
     amountField: '#amount',
     addANoteField: '#transaction-create-description-input',
     payBtn: '[data-test="transaction-create-submit-payment"]',
@@ -53,8 +53,30 @@ export const selectors = {
     homeBtn: '[data-test="sidenav-home"]',
     messagePleaseEnteraValidAmount: '#transaction-create-amount-input-helper-text',
     messagePleaseEnteraNote: '#transaction-create-description-input-helper-text',
-    returnToTransactionsBtn: '[data-test="new-transaction-return-to-transactions"]'
-
+    returnToTransactionsBtn: '[data-test="new-transaction-return-to-transactions"]',
+    messageTransactionSubmitted: '[data-test="alert-bar-success"]',
+    textYourTransactionPayment: '[class="ReactVirtualized__Grid ReactVirtualized__List"]',
+    textYourTransactionRequest: '[class="ReactVirtualized__Grid ReactVirtualized__List"]',
+    searchField: '#user-list-search-input',
+    fieldWithAttribute: '.MuiGrid-spacing-xs-1',
+    btnEveryone: '[data-test="nav-public-tab"]',
+    btnFriends: '[data-test="nav-contacts-tab"]',
+    btnMine: '[data-test="nav-personal-tab"]',
+    acceptRequestBtn: '[data-test*="transaction-accept-request"]',
+    rejectBtn: '[data-test*="transaction-reject-request"]',
+    myAccountBtn: '[data-test="sidenav-user-settings"]',
+    userSettingsText: '.MuiPaper-root > .MuiTypography-root',
+    firstNameField: '#user-settings-firstName-input',
+    lastNameField: '#user-settings-lastName-input',
+    emailField: '#user-settings-email-input',
+    phoneNumberField: '#user-settings-phoneNumber-input',
+    messageEnteraFirstName: '#user-settings-firstName-input-helper-text',
+    messageEnteraLastName: '#user-settings-lastName-input-helper-text',
+    messageEnterAnEmailAddress: '#user-settings-email-input-helper-text',
+    messageEnteraPhoneNumber: '#user-settings-phoneNumber-input-helper-text',
+    saveUserSettingsBtn: '[data-test="user-settings-submit"]',
+    messageMustContainaValidEmailAddress: '#user-settings-email-input-helper-text',
+    messagePhoneNumberIsNotValid: '#user-settings-phoneNumber-input-helper-text'
 }
 
 export const dataForSignUp = {
@@ -72,10 +94,8 @@ export const complete_onboarding = {
 }
 
 export const dataForLoginTransaction = {
-
     CreatedAccount: "Katharina_Bernier",
     CreatedPassword: "s3cret"
-
 }
 
 export  const dataForLoginReceiver = {
