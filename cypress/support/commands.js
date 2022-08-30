@@ -66,7 +66,6 @@ Cypress.Commands.add('dataDisplayBankAccountFormErrors', () => {
     cy.get(selectors.accountNumber).type('h')
     cy.get(selectors.messageEnterAValidBankAccountNumber).should('be.visible').should('have.text', 'Must contain at least 9 digits')
     cy.get(selectors.accountNumber).clear()
-
 })
 
 Cypress.Commands.add('complete_onboarding', () => {
@@ -125,8 +124,8 @@ Cypress.Commands.add("loginByApi", (username, password) => {
 
 Cypress.Commands.add("signupApi", (username, password) => {
     cy.request("POST", `${apiUrl}/users`, {
-        firstName: "First",
-        lastName: "Second",
+        firstName: "FirstName",
+        lastName: "SecondName",
         username: username,
         password: password,
         confirmPassword: password,
@@ -136,7 +135,34 @@ Cypress.Commands.add("signupApi", (username, password) => {
 Cypress.Commands.add("logoutApi", () => {
     cy.window({log: false}).then((win) => win.authService.send("LOGOUT", {}))
     cy.wait(1000)
-});
+})
 
+Cypress.Commands.add("create_bank_account_API", (bankName, accountNumber, routingNumber) => {
+    cy.request("POST", `${apiUrl}/bankAccounts`, {
+        bankName,
+        accountNumber,
+        routingNumber,
+    }).then((response) => {
+        expect(response.status).to.eq(200);
+    })
+})
 
+Cypress.Commands.add("delete_bank_account_API", (bankAccountId) => {
+    cy.request("DELETE", `${apiUrl}/bankAccounts/${bankAccountId}`).should( (response) => { expect(response.status).to.eq(200)
+        })
+})
 
+Cypress.Commands.add("add_contact_API", (userId) => {
+    cy.request("POST", `${apiUrl}/contacts`, {
+        contactUserId: userId,
+    }) .then((response) => {
+            expect(response.status).to.eq(200);
+            expect(response.body.contact.id).to.be.a("string");
+        })
+})
+
+Cypress.Commands.add("delete_contact_API", (userId) => {
+    cy.request("DELETE", `${apiUrl}/contacts/${userId}`).should((response) => {
+        expect(response.status).to.eq(200);
+    })
+})

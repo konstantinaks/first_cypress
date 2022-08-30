@@ -11,3 +11,4 @@ export function credentialsApi() {
     const pickedNameIndex = Math.floor(Math.random() * names.length);
     return `${names[pickedNameIndex]}${randomNum}`;
 }
+
